@@ -16,54 +16,40 @@
   ~ limitations under the License.
   ~
   -->
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>java-agent-sniffer</artifactId>
-        <groupId>org.apache.skywalking</groupId>
-        <version>9.6.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>optional-reporter-plugins</artifactId>
-    <packaging>pom</packaging>
+    <parent>
+        <groupId>org.apache.skywalking</groupId>
+        <artifactId>spring-plugins</artifactId>
+        <version>9.6.0-SNAPSHOT</version>
+    </parent>
 
-    <modules>
-        <module>kafka-reporter-plugin</module>
-        <module>kafka-config-extension</module>
-    </modules>
+    <artifactId>apm-spring-kafka-3.x-plugin</artifactId>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <optional.reporter.plugins.dest.dir>${maven.multiModuleProjectDirectory}/skywalking-agent/optional-reporter-plugins</optional.reporter.plugins.dest.dir>
-
-        <ant-contrib.version>1.0b3</ant-contrib.version>
-        <ant-nodeps.version>1.8.1</ant-nodeps.version>
-
-        <kafka-clients.version>3.9.1</kafka-clients.version>
-        <spring-kafka-test.version>2.4.6.RELEASE</spring-kafka-test.version>
+        <spring-kafka.version>3.0.0</spring-kafka.version>
+        <kafka-clients.version>3.7.1</kafka-clients.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.skywalking</groupId>
-            <artifactId>apm-agent-core</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <version>${spring-kafka.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.skywalking</groupId>
-            <artifactId>java-agent-util</artifactId>
+            <artifactId>apm-kafka-commons</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.skywalking</groupId>
-            <artifactId>apm-test-tools</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka-clients.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
-
 </project>
